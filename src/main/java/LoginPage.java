@@ -17,22 +17,27 @@ public class LoginPage {
     public LoginPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
+
     @Step("Открытие страницы /login")
     public void open() {
         webDriver.get(URL);
     }
+
     @Step("Ввод в поле «Email»")
     public void inputEmail(String email) {
         webDriver.findElement(emailField).sendKeys(email);
     }
+
     @Step("Ввод в поле «Пароль»")
     public void inputPassword(String password) {
         webDriver.findElement(passwordField).sendKeys(password);
     }
+
     @Step("Тап на кнопке «Войти» на странице /login")
     public void clickLogin() {
         webDriver.findElement(loginButton).click();
     }
+
     @Step("Ожидание загрузки на странице /login")
     public void waitLoginPage() {
         new WebDriverWait(webDriver, Duration.ofSeconds(3))

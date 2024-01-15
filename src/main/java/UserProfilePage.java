@@ -15,18 +15,22 @@ public class UserProfilePage {
     public UserProfilePage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
+
     @Step("Получение текста «Профиль» на странице личного кабинета")
     public String getProfileText() {
         return webDriver.findElement(profile).getText();
     }
+
     @Step("Тап по кнопке «Конструктор»")
     public void clickConstructorButton() {
         webDriver.findElement(constructorButton).click();
     }
+
     @Step("Тап по кнопке «Лого»")
     public void clicklogoButton() {
         webDriver.findElement(logoButton).click();
     }
+
     @Step("Тап по кнопке «Выход» на странице личного кабинета")
     public void clickExitButton() {
         webDriver.findElement(exitButton).click();

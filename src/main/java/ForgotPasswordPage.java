@@ -11,10 +11,12 @@ public class ForgotPasswordPage {
     public ForgotPasswordPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
+
     @Step("Открытие страницы восстановления пароля")
     public void open() {
         webDriver.get(URL);
     }
+
     @Step("Тап по кнопке «Войти» на странице восстановления пароля")
     public void clickLogin() {
         webDriver.findElement(loginButton).click();

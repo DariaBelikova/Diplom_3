@@ -26,8 +26,7 @@ public class MainPageTest {
     public void setUp() {
         RestAssured.baseURI = BASE_URL;
         User user = new User("PadmeAmidala", "Padme-data@yandex.ru", "padmeAmidala");
-        UserClient userClient = new UserClient();
-        Response createResponse = userClient.create(user);
+        Response createResponse = UserClient.create(user);
         accessToken = createResponse.path("accessToken");
 
         ChromeOptions options = new ChromeOptions();
@@ -52,12 +51,14 @@ public class MainPageTest {
     public void checkLinkToSauce() {
         MainPage mainPage = new MainPage(webDriver);
 
+        int expLocation = mainPage.getIngredientTitleExpectedLocation();
+
         mainPage.clickSauceButton();
 
         MatcherAssert.assertThat(
-                "Надпись 'Соусы' на разделе с соусами",
-                mainPage.getSauceSectionText(),
-                equalTo("Соусы")
+                "Окно не проскролилось до раздела Соусы",
+                mainPage.getSousLocation(),
+                equalTo(expLocation)
         );
     }
 
@@ -66,14 +67,19 @@ public class MainPageTest {
     public void checkLinkToBuns() {
         MainPage mainPage = new MainPage(webDriver);
 
+        int expLocation = mainPage.getIngredientTitleExpectedLocation();
+
         mainPage.clickSauceButton();
+
         mainPage.clickBunsButton();
 
         MatcherAssert.assertThat(
-                "Надпись 'Булки' на разделе с булками",
-                mainPage.getBunsSectionText(),
-                equalTo("Булки")
+                "Окно не проскролилось до раздела Булки",
+                mainPage.getBunsLocation(),
+                equalTo(expLocation)
         );
+
+
     }
 
     @Test
@@ -81,13 +87,17 @@ public class MainPageTest {
     public void checkLinkToFilling() {
         MainPage mainPage = new MainPage(webDriver);
 
+        int expLocation = mainPage.getIngredientTitleExpectedLocation();
+
         mainPage.clickFillingButton();
 
         MatcherAssert.assertThat(
-                "Надпись 'Начинки' на разделе с начинками",
-                mainPage.getFillingSectionText(),
-                equalTo("Начинки")
+                "Окно не проскролилось до раздела Ингридиенты",
+                mainPage.getFillingLocation(),
+                equalTo(expLocation)
         );
+
+
     }
 
     @After

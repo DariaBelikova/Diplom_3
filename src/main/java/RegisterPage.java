@@ -19,30 +19,37 @@ public class RegisterPage {
     public RegisterPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
+
     @Step("Заполнение поля «Email» на странице регистрации")
     public void inputEmail(String email) {
         webDriver.findElement(emailField).sendKeys(email);
     }
+
     @Step("Заполнение поля «Имя» на странице регистрации")
     public void inputName(String name) {
         webDriver.findElement(nameField).sendKeys(name);
     }
+
     @Step("Заполнение поля «Пароль» на странице регистрации")
     public void inputPassword(String password) {
         webDriver.findElement(passwordField).sendKeys(password);
     }
+
     @Step("Тап по кнопке «Зарегистрироваться» на странице регистрации")
     public void clickRegister() {
         webDriver.findElement(registerButton).click();
     }
+
     @Step("Тап по кнопке «Войти» на странице регистрации")
     public void clickLogin() {
         webDriver.findElement(loginButton).click();
     }
+
     @Step("Открытие страницы Регистрации")
     public void open() {
         webDriver.get(PAGE_URL);
     }
+
     @Step("Текст «Некорректный пароль» на странице регистрации")
     public boolean loginError() {
         return webDriver.findElement(loginError).isDisplayed();

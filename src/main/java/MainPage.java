@@ -96,10 +96,4 @@ public class MainPage {
         );
     }
 
-    public int getBunTitleExpectedLocation() {
-        return Integer.valueOf(webDriver.findElements(ingredientsButtons).get(0).getLocation().getY()
-                + webDriver.findElements(ingredientsButtons).get(0).getSize().getHeight()
-        );
-    }
-
 }

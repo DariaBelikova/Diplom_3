@@ -27,8 +27,8 @@ public class UserProfileTest {
     public void setUp() {
         RestAssured.baseURI = BASE_URL;
         User user = new User("RonWeasley", "Ron-data@yandex.ru", "RonRonWeasley");
-        UserClient userClient = new UserClient();
-        Response createResponse = userClient.create(user);
+
+        Response createResponse = UserClient.create(user);
         accessToken = createResponse.path("accessToken");
 
         ChromeOptions options = new ChromeOptions();
